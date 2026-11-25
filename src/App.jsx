@@ -24,6 +24,8 @@ function TaskList() {
   const [tasks, setTasks] = useState(initialTasks)
   const [newTitle, setNewTitle] = useState("")
 
+  const totalRemaining = tasks.filter(task => !task.done).length
+
   function toggleTask(id) {
     setTasks(tasks.map((task) => {
       if (task.id === id) {
@@ -45,6 +47,7 @@ function TaskList() {
   return (
     <section>
       <h2>Tâches</h2>
+      <small>{totalRemaining} tâche(s) restante(s)</small>
       <form role="group" onSubmit={handleSubmit}>
         <input placeholder="Nouvelle tâche" value={newTitle} onChange={(event) => setNewTitle(event.target.value)}  />
         <button>Ajouter</button>
