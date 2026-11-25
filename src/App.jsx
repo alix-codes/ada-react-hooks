@@ -10,12 +10,12 @@ const initialTasks = [
 
 function TaskItem({ task, onToggle }) {
   return (
-    <li>
+    <li className="flex items-baseline">
       <label>
         <input type="checkbox" checked={task.done} onChange={onToggle} />
         {task.done ? <s>{task.title}</s> : task.title}
       </label>
-      <small>({task.assignee})</small>
+      <small className="ml-2">({task.assignee})</small>
     </li>
   );
 }
