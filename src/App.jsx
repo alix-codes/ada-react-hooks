@@ -19,6 +19,15 @@ function TaskItem({ task }) {
 function TaskList() {
   const [tasks, setTasks] = useState(initialTasks)
 
+  function toggleTask(id) {
+    setTasks(tasks.map((task) => {
+      if (task.id === id) {
+        task.done = !task.done
+      }
+      return task
+    }))
+  }
+
   return (
     <section>
       <h2>Tâches</h2>
