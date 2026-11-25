@@ -1,3 +1,5 @@
+import { useState } from "react"
+
 const initialTasks = [
   { id: 1, title: "Préparer la démo du sprint", assignee: "Ada", done: false },
   { id: 2, title: "Relire la PR de Grace", assignee: "Ada", done: true },
@@ -15,7 +17,7 @@ function TaskItem({ task }) {
 }
 
 function TaskList() {
-  const tasks = initialTasks;
+  const [tasks, setTasks] = useState(initialTasks)
 
   return (
     <section>
