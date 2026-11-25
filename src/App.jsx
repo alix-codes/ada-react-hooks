@@ -13,8 +13,9 @@ function TaskItem({ task, onToggle }) {
     <li>
       <label>
         <input type="checkbox" checked={task.done} onChange={onToggle} />
-        {task.title} <small>({task.assignee})</small>
+        {task.done ? <s>{task.title}</s> : task.title}
       </label>
+      <small>({task.assignee})</small>
     </li>
   );
 }
