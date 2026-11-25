@@ -8,10 +8,13 @@ const initialTasks = [
   { id: 5, title: "Mettre à jour le README", assignee: "Grace", done: true },
 ];
 
-function TaskItem({ task }) {
+function TaskItem({ task, onToggle }) {
   return (
     <li>
-      {task.title} <small>({task.assignee})</small>
+      <label>
+        <input type="checkbox" checked={task.done} onChange={onToggle} />
+        {task.title} <small>({task.assignee})</small>
+      </label>
     </li>
   );
 }
@@ -33,7 +36,7 @@ function TaskList() {
       <h2>Tâches</h2>
       <ul>
         {tasks.map((task) => (
-          <TaskItem key={task.id} task={task} />
+          <TaskItem key={task.id} task={task} onToggle={() => toggleTask(task.id)} />
         ))}
       </ul>
     </section>
