@@ -22,6 +22,7 @@ function TaskItem({ task, onToggle }) {
 
 function TaskList() {
   const [tasks, setTasks] = useState(initialTasks)
+  const [newTitle, setNewTitle] = useState("")
 
   function toggleTask(id) {
     setTasks(tasks.map((task) => {
@@ -35,6 +36,10 @@ function TaskList() {
   return (
     <section>
       <h2>Tâches</h2>
+      <form role="group" onSubmit={() => {}}>
+        <input placeholder="Nouvelle tâche" value={newTitle} onChange={(event) => setNewTitle(event.target.value)}  />
+        <button>Ajouter</button>
+      </form>
       <ul>
         {tasks.map((task) => (
           <TaskItem key={task.id} task={task} onToggle={() => toggleTask(task.id)} />
