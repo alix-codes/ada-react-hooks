@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 function TaskItem({ task, onToggle }) {
   return (
@@ -18,7 +18,10 @@ function TaskList() {
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
+  const inputRef = useRef(null)
+
   useEffect(() => {
+    inputRef.current?.focus()
     fetch("/tasks.json")
       .then(res => {
         if (!res.ok) {
@@ -49,6 +52,7 @@ function TaskList() {
     }
     setTasks([...tasks, { id: Date.now(), title: newTitle, assignee: "Ada", done: false }])
     setNewTitle("")
+    inputRef.current.focus()
   }
 
   if (error) {
@@ -60,7 +64,7 @@ function TaskList() {
       <h2>Tâches</h2>
       <small>{totalRemaining} tâche(s) restante(s)</small>
       <form role="group" onSubmit={handleSubmit}>
-        <input placeholder="Nouvelle tâche" value={newTitle} onChange={(event) => setNewTitle(event.target.value)}  />
+        <input ref={inputRef} placeholder="Nouvelle tâche" value={newTitle} onChange={(event) => setNewTitle(event.target.value)}  />
         <button>Ajouter</button>
       </form>
       {isLoading ? "Tâches en chargement..." : (
