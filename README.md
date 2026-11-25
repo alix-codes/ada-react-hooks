@@ -22,20 +22,6 @@ node -v
 
 Si la version est plus ancienne, installez la dernière version LTS depuis [nodejs.org](https://nodejs.org).
 
-### Ajouter Pico CSS
-
-Pico CSS donne un style moderne aux éléments HTML (boutons, champs, listes, cases à cocher…) sans qu'on ait besoin d'écrire de CSS.
-
-Ouvrez `index.html` à la racine du projet :
-
-- remplacez `lang="en"` par `lang="fr"` ;
-- changez le contenu de `<title>` en `Lovelace Factory` ;
-- ajoutez cette ligne juste avant `</head>` :
-
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
-```
-
 ### Faire le ménage
 
 1. Supprimez les fichiers `src/App.css` et `src/index.css`.
