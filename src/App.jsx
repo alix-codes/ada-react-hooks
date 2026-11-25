@@ -52,7 +52,7 @@ function TaskList() {
   }
 
   if (error) {
-    return <p className="text-red-500">{error}</p>
+    return <p className="bg-red-50 p-2">{error}</p>
   }
 
   return (
