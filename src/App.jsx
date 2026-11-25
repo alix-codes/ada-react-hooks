@@ -33,10 +33,19 @@ function TaskList() {
     }))
   }
 
+  function handleSubmit(event) {
+    event.preventDefault()
+    if (newTitle === "") {
+      return
+    }
+    setTasks([...tasks, { id: Date.now(), title: newTitle, assignee: "Ada", done: false }])
+    setNewTitle("")
+  }
+
   return (
     <section>
       <h2>Tâches</h2>
-      <form role="group" onSubmit={() => {}}>
+      <form role="group" onSubmit={handleSubmit}>
         <input placeholder="Nouvelle tâche" value={newTitle} onChange={(event) => setNewTitle(event.target.value)}  />
         <button>Ajouter</button>
       </form>
